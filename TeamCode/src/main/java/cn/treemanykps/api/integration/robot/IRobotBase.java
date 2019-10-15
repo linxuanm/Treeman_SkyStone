@@ -16,8 +16,7 @@ import lombok.val;
  */
 public abstract class IRobotBase<T extends IMachineComponent> {
 
-    @Getter(AccessLevel.PROTECTED)
-    private MachineMap<T> machineMap;
+    @Getter(AccessLevel.PROTECTED) private MachineMap<T> machineMap;
 
     public IRobotBase(HardwareMap hardwareMap) {
         this.machineMap = new MachineMap<>();
