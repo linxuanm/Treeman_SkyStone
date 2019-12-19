@@ -10,12 +10,18 @@ import cn.treemanykps.api.struct.future.Predicate;
  * A state machine that abuse the usage of generics.
  *
  * <p>
- * Each state entry should contain 2 consumers; one to trigger when the state starts and
- * one to trigger when the state ends.
+ *     Each state entry should contain 2 consumers; one to trigger when the state starts
+ *     and one to trigger when the state ends.
+ * </p>
+ *
+ * <p>
+ *     During each update, an instance of T and an instance of P are passed in. These will
+ *     be used to trigger the battlecry/deathrattle of each state and to determine whether
+ *     the current state should be terminated respectively.
  * </p>
  *
  * @param <T> The type which the consumer should accept.
- * @param <P> The type which the stopper should check. Pass in a type of this per update.
+ * @param <P> The type which the stopper should check.
  */
 public class QueueStateMachine<T, P> {
 

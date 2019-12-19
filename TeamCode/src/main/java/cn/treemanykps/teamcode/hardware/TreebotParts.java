@@ -1,10 +1,7 @@
 package cn.treemanykps.teamcode.hardware;
 
 import cn.treemanykps.api.integration.structure.IMachineComponent;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-@AllArgsConstructor
 public enum TreebotParts implements IMachineComponent {
 
     RIGHT_TOP_MOTOR("right_top_motor"),
@@ -12,6 +9,13 @@ public enum TreebotParts implements IMachineComponent {
     LEFT_TOP_MOTOR("left_top_motor"),
     LEFT_BOTTOM_MOTOR("left_bottom_motor");
 
-    @Getter
     private String name;
+
+    TreebotParts(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }

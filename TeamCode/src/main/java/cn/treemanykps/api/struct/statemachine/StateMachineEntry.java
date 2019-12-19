@@ -2,8 +2,6 @@ package cn.treemanykps.api.struct.statemachine;
 
 import cn.treemanykps.api.struct.future.Consumer;
 import cn.treemanykps.api.struct.future.Predicate;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 /**
  * An entry for the state machine.
@@ -11,12 +9,17 @@ import lombok.Getter;
  * @param <T> The type which the consumer should accept.
  * @param <P> The type which the stopper should evaluate.
  */
-@AllArgsConstructor
-public class StateMachineEntry<T, P> implements Predicate<P>{
+public class StateMachineEntry<T, P> implements Predicate<P> {
 
-    @Getter private Consumer<T> battlecry;
-    @Getter private Consumer<T> deathrattle;
+    private Consumer<T> battlecry;
+    private Consumer<T> deathrattle;
     private Predicate<P> tester;
+
+    public StateMachineEntry(Consumer<T> start, Consumer<T> end, Predicate<P> test) {
+        this.battlecry = start;
+        this.deathrattle = end;
+        this.tester = test;
+    }
 
     public static <A, B> StateMachineEntry<A, B> getDummy() {
         return new StateMachineEntry<>(

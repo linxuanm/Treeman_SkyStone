@@ -4,9 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import cn.treemanykps.api.integration.MachineMap;
 import cn.treemanykps.api.integration.structure.IMachineComponent;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.val;
 
 /**
  * The base class which all robots should extend.
@@ -16,11 +13,11 @@ import lombok.val;
  */
 public abstract class IRobotBase<T extends IMachineComponent> {
 
-    @Getter(AccessLevel.PROTECTED) private MachineMap<T> machineMap;
+    private MachineMap<T> machineMap;
 
     public IRobotBase(HardwareMap hardwareMap) {
         this.machineMap = new MachineMap<>();
-        for (val i: this.getParts()) {
+        for (T i: this.getParts()) {
             this.machineMap.initDevice(i, hardwareMap);
         }
     }
